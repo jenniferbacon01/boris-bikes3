@@ -15,13 +15,10 @@ class DockingStation
   end
 
   def release_bike
-    if @bike_array.all?{|i| i.nil?}
-      fail ("docking station is empty")
-    else
-      first_bike = @bike_array.index(nil) - 1
-      @bike_array[first_bike]
-      #@bike_array[first_bike] = nil
-    end
+    fail ("docking station is empty") if @bike_array.all?{|i| i.nil?}
+    first_bike = @bike_array.index(nil) - 1
+    @bike_array[first_bike]
+    # @bike_array[first_bike] = nil
   end
 
   def dock_bike
@@ -31,5 +28,6 @@ class DockingStation
     "bike has been docked"
 
   end
+
 
 end
