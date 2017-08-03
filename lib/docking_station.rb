@@ -1,7 +1,7 @@
 #require 'bike'
 class DockingStation
 
-  attr_accessor(:spaces, :bikes, :bike_array, :docking_status)
+  attr_accessor(:spaces, :bikes, :bike_array)
 
   def initialize(spaces = 20, bikes = 20)
     @spaces = spaces
@@ -15,15 +15,17 @@ class DockingStation
   end
 
   def release_bike
-    case docking_status
-      when @bike_array.all? {|i| i.nil?}
-        fail ("docking station is empty")
-      when @bike_array.all? {|i| i.is_a?(Bike)}
-        @bike_array[-1] = nil
-      when first_bike = @bike_array.index(nil) - 1
-        @bike_array[first_bike] = nil
+    if @bike_array.all? {|i| i.nil?}
+      fail ("docking station is empty")
+    elsif @bike_array.all? {|i| i.is_a?(Bike)}
+      bike_produced = @bike_array[-1]
+      @bike_array[-1] = nil
+    else
+      first_bike = @bike_array.index(nil) - 1
+      bike_produced = @bike_array[first_bike]
+      @bike_array[first_bike] = nil
     end
-
+    bike_produced
   end
 
   def dock_bike

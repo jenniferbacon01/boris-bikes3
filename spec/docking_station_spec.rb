@@ -23,7 +23,7 @@ describe DockingStation do
   end
 
   it "knows how many spaces it has" do
-    expect(docking_station.spaces).to eq 10
+    expect(docking_station.spaces).to eq 20
   end
 
   it "knows how many bikes it has" do
@@ -31,15 +31,16 @@ describe DockingStation do
   end
 
   it "knows how many bikes it has" do
-    expect(docking_station.bikes).to eq 5
+    expect(docking_station.bikes).to eq 20
   end
 
   it "stores bikes as an array" do
     expect(docking_station.bike_array.is_a?(Array)).to eq true
   end
 
-  it "stores bikes as an array" do
-    expect(docking_station.bike_array[0..19].all?{|a| a.is_a?(Bike)}).to eq true
+  it "creates 20 bikes" do
+    docking_station4 = DockingStation.new
+    expect(docking_station4.bike_array.all? { |a| a.is_a?(Bike) } ).to eq true
   end
 
   it "checks if there is a space" do
@@ -61,7 +62,9 @@ describe DockingStation do
   end
 
   it "adds a bike to the first empty space" do
-     expect(docking_station.bike_array[docking_station.bikes].is_a?(Bike)).to eq true
+    docking_station1 = DockingStation.new(20,10)
+    docking_station1.dock_bike
+    expect(docking_station1.bike_array[10].is_a?(Bike)).to eq true
   end
 
 
