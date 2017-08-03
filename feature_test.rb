@@ -12,7 +12,8 @@ puts "jenny feature test"
 
 docking_station = DockingStation.new
 
-p docking_station.bike_array.all? { |a| a.is_a?(Bike) }
+p docking_station.release_bike
+# p docking_station.bike_array.all? { |a| a.is_a?(Bike) }
 # p docking_station1.bike_array
 # 20.times {docking_station1.dock_bike}
 #

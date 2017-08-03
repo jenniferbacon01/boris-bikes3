@@ -15,9 +15,9 @@ class DockingStation
   end
 
   def release_bike
-    if @bike_array.all? {|i| i.nil?}
+    if empty?
       fail ("docking station is empty")
-    elsif @bike_array.all? {|i| i.is_a?(Bike)}
+    elsif full?
       bike_produced = @bike_array[-1]
       @bike_array[-1] = nil
     else
@@ -36,5 +36,14 @@ class DockingStation
 
   end
 
+private
+
+  def full?
+    @bike_array.all? {|i| i.is_a?(Bike)}
+  end
+
+  def empty?
+    @bike_array.all? {|i| i.nil?}
+  end
 
 end
