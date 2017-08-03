@@ -39,11 +39,7 @@ describe DockingStation do
   end
 
   it "stores bikes as an array" do
-    expect(docking_station.bike_array[0..4].all?{|a| a.is_a?(Bike)}).to eq true
-  end
-
-  it "stores bikes as an array" do
-    expect(docking_station.bike_array[5..9].all?{|a| a.nil?}).to eq true
+    expect(docking_station.bike_array[0..19].all?{|a| a.is_a?(Bike)}).to eq true
   end
 
   it "checks if there is a space" do
@@ -56,7 +52,7 @@ describe DockingStation do
   end
 
   it "checks if there docking station is empty" do
-    docking_station2 = DockingStation.new(0,0)
+    docking_station2 = DockingStation.new(10,0)
     expect{docking_station2.release_bike}.to raise_error("docking station is empty")
   end
 
