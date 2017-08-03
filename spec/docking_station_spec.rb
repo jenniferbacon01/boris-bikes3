@@ -50,6 +50,11 @@ describe DockingStation do
     expect(docking_station.bike_array.include?(nil)).to eq true
   end
 
+  it "checks if there docking station is full" do
+    docking_station2 = DockingStation.new(10,10)
+    expect{docking_station2.dock_bike}.to raise_error("docking station full")
+  end
+
   it "tells you bike has been docked" do
     expect(docking_station.dock_bike).to eq "bike has been docked"
   end
@@ -58,9 +63,5 @@ describe DockingStation do
      expect(docking_station.bike_array[docking_station.bikes].is_a?(Bike)).to eq true
   end
 
-  it "says it's full if there are no spaces" do
-    docking_station1 = DockingStation.new(12,12)
-    expect(docking_station1.dock_bike).to eq "docking station is full"
-  end
 
 end

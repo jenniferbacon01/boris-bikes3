@@ -14,25 +14,17 @@ class DockingStation
     end
   end
 
-
-
   def release_bike
     p Bike.new
   end
 
   def dock_bike
     first_space = @bike_array.index(nil)
-      if first_space
-        @bike_array[first_space] = Bike.new
-        "bike has been docked"
-      else
-        "docking station is full"
-    end
+    fail("docking station full") unless first_space
+    @bike_array[first_space] = Bike.new
+    "bike has been docked"
+
   end
 
 
 end
-
-p asdf=DockingStation.new(6,5)
-p asdf.bike_array
-p asdf.bike_array.class
