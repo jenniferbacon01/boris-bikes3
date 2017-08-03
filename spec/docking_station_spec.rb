@@ -55,6 +55,11 @@ describe DockingStation do
     expect{docking_station2.dock_bike}.to raise_error("docking station full")
   end
 
+  it "checks if there docking station is empty" do
+    docking_station2 = DockingStation.new(0,0)
+    expect{docking_station2.release_bike}.to raise_error("docking station is empty")
+  end
+
   it "tells you bike has been docked" do
     expect(docking_station.dock_bike).to eq "bike has been docked"
   end

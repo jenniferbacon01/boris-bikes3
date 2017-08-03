@@ -15,7 +15,13 @@ class DockingStation
   end
 
   def release_bike
-    p Bike.new
+    p @bike_array.nil?
+    if @bike_array.nil?
+      fail ("docking station is empty")
+    else
+      first_bike = @bike_array.index(nil) - 1
+      @bike_array[first_bike]
+    end
   end
 
   def dock_bike
