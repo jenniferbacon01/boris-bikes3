@@ -6,24 +6,24 @@ describe DockingStation do
 
   docking_station=DockingStation.new
 
-  it "Recognises release_bike" do
-    expect(docking_station).to respond_to(:release_bike)
-  end
+  # it "Recognises release_bike" do
+  #   expect(docking_station).to respond_to(:release_bike)
+  # end
 
   it "when release_bike called gives new Bike" do
     docking_station9=DockingStation.new(10,7)
     expect((docking_station9.release_bike).is_a?(Bike)).to eq true
   end
 
-  it "when docking a bike, the docking station notices" do
-    expect(docking_station).to respond_to(:dock_bike)
-  end
+  # it "when docking a bike, the docking station notices" do
+  #   expect(docking_station).to respond_to(:dock_bike)
+  # end
+  #
+  # it "knows how many spaces it has" do
+  #   expect(docking_station.spaces.is_a?(Fixnum)).to eq true
+  # end
 
-  it "knows how many spaces it has" do
-    expect(docking_station.spaces.is_a?(Fixnum)).to eq true
-  end
-
-  it "knows how many spaces it has" do
+  it "knows how many spaces it has as a default" do
     expect(docking_station.spaces).to eq 20
   end
 
@@ -32,17 +32,17 @@ describe DockingStation do
     expect(docking_station6.spaces).to eq 10
   end
 
-  it "knows how many bikes it has" do
-    expect(docking_station.bikes.is_a?(Fixnum)).to eq true
-  end
+  # it "knows how many bikes it has" do
+  #   expect(docking_station.bikes.is_a?(Fixnum)).to eq true
+  # end
 
-  it "knows how many bikes it has" do
+  it "knows how many bikes it has as a default" do
     expect(docking_station.bikes).to eq 20
   end
 
-  it "stores bikes as an array" do
-    expect(docking_station.bike_array.is_a?(Array)).to eq true
-  end
+  # it "stores bikes as an array" do
+  #   expect(docking_station.bike_array.is_a?(Array)).to eq true
+  # end
 
   it "creates 20 bikes" do
     docking_station4 = DockingStation.new
@@ -55,8 +55,7 @@ describe DockingStation do
 
   it "checks if there docking station is full" do
     docking_station2 = DockingStation.new(10,10)
-    bike2 = Bike.new
-    expect{docking_station2.dock_bike(bike2,true)}.to raise_error("docking station full")
+    expect{docking_station2.dock_bike(double(:bike),true)}.to raise_error("docking station full")
   end
 
   it "checks if there docking station is empty" do
@@ -66,14 +65,12 @@ describe DockingStation do
 
   it "tells you bike has been docked" do
     docking_station1 = DockingStation.new(20,10)
-    bike3 = Bike.new
-    expect(docking_station1.dock_bike(bike3, true)).to eq "bike has been docked"
+    expect(docking_station1.dock_bike(double(:bike), true)).to eq "bike has been docked"
   end
 
   it "adds a bike to the first empty space" do
     docking_station1 = DockingStation.new(20,10)
-    bike4 = Bike.new
-    docking_station1.dock_bike(bike4, true)
+    docking_station1.dock_bike(double(:bike), true)
     expect(docking_station1.bike_array[10][0].is_a?(Bike)).to eq true
   end
 
