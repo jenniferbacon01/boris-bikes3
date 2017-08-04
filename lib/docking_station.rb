@@ -2,8 +2,9 @@
 class DockingStation
 
   attr_accessor(:spaces, :bikes, :bike_array)
+  DEFAULT_CAPACITY = 20
 
-  def initialize(spaces = 20, bikes = 20)
+  def initialize(spaces = DEFAULT_CAPACITY, bikes = 20)
     @spaces = spaces
     @bikes = bikes
     @bike_array = Array.new(spaces)

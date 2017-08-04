@@ -26,6 +26,11 @@ describe DockingStation do
     expect(docking_station.spaces).to eq 20
   end
 
+  it "when instantiated with 10 spaces, it has 10 spaces" do
+    docking_station6 = DockingStation.new(10,0)
+    expect(docking_station6.spaces).to eq 10
+  end
+
   it "knows how many bikes it has" do
     expect(docking_station.bikes.is_a?(Fixnum)).to eq true
   end
