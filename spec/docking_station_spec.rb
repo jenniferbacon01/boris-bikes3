@@ -11,7 +11,8 @@ describe DockingStation do
   end
 
   it "when release_bike called gives new Bike" do
-    expect((docking_station.release_bike)[0].is_a?(Bike)).to eq true
+    docking_station9=DockingStation.new(10,7)
+    expect((docking_station9.release_bike).is_a?(Bike)).to eq true
   end
 
   it "when docking a bike, the docking station notices" do
@@ -48,9 +49,9 @@ describe DockingStation do
     expect(docking_station4.bike_array.all? { |a| a[0].is_a?(Bike) } ).to eq true
   end
 
-  it "checks if there is a space" do
-    expect(docking_station.bike_array.include?(nil)).to eq true
-  end
+  # it "checks if there is a space" do
+  #   expect(docking_station.bike_array.include?(nil)).to eq true
+  # end
 
   it "checks if there docking station is full" do
     docking_station2 = DockingStation.new(10,10)
@@ -64,8 +65,9 @@ describe DockingStation do
   end
 
   it "tells you bike has been docked" do
+    docking_station1 = DockingStation.new(20,10)
     bike3 = Bike.new
-    expect(docking_station.dock_bike(bike3, true)).to eq "bike has been docked"
+    expect(docking_station1.dock_bike(bike3, true)).to eq "bike has been docked"
   end
 
   it "adds a bike to the first empty space" do
@@ -82,14 +84,14 @@ describe DockingStation do
     expect(docking_station7.bike_array[10]).to eq [bike7,false]
   end
 
-  it "does not release a bike if the last bike is broken" do
+  it "releases a working bike if has broken bikes" do
     docking_station8 = DockingStation.new(10,5)
+    bike7 = Bike.new
     bike8 = Bike.new
+    docking_station8.dock_bike(bike7,true)
     docking_station8.dock_bike(bike8,false)
-    expect(docking_station8.release_bike).to eq "unable to release bike as it is broken"
+    expect(docking_station8.release_bike).to eq bike7
   end
-
-
 
 
 end
